@@ -1,4 +1,3 @@
-require 'pry'
 class Application
 
   def call(env)
@@ -7,7 +6,6 @@ class Application
 
     if req.path.match(/items/)
       search_item = req.path.split("/items/").last
-      # binding.pry
       if item = @@items.detect{|i| i.name == search_item}
         resp.status = 200
         resp.write "#{item.price}"
