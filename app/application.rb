@@ -6,8 +6,8 @@ class Application
     req = Rack::Request.new(env)
 
     if req.path.match(/items/)
-      search_item = req.params["item"]
-      binding.pry
+      search_item = req.path.split("/items/").last
+      # binding.pry
       if @@items.include?(search_item)
         resp.status = 200
         resp.write "#{search_item.price}"
